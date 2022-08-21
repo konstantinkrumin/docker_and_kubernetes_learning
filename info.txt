@@ -1,0 +1,111 @@
+** RUN command executes when the image is being created, but CMD when the container is started from the image
+
+** WORKDIR sets up default working directory
+
+** COPY . . copies files from the current local folder to the working directory in Docker image
+
+=============================================================
+
+# TO RUN A NODE.JS DOCKER CONTAINER
+docker run node
+
+# TO RUN A NODE.JS DOCKER CONTAINER in INTERACTIVE MODE
+docker run -it node
+
+# TO SHOW ALL CONTAINERS
+docker ps -a
+
+# TO SHOW ONLY ACTIVE CONTAINERS 
+docker ps
+
+# TO BUILD A DOCKER IMAGE IN THE SAME DIRECTORY 
+docker build . 
+
+# TO RUN A DOCKER CONTAINER ON SPECIFIC PORT BASED ON A SPECIFIC IMAGE
+docker run -p 3000:80 896d725acc6e
+
+docker run -p [PORT WHERE WE WANT TO RUN A DOCKER]:[EXPOSED PORT] [IMAGE ID]
+
+## TO AUTOMATICALLY REMOVE CONTAINER WHEN IT IS STOPPED USE --rm
+docker run -p 3000:80 -d --rm 896d725acc6e
+
+## TO ADD A NAME TO A CONTAINER USE --name
+docker run -p 3000:80 -d --rm --name goalsapp 896d725acc6e
+
+# TO START AN EXISTING CONTAINER
+docker start [CONTAINER NAME]
+
+# TO STOP A RUNNING CONTAINER
+docker stop [CONTAINER NAME]
+
+# TO SEE THE LOGS OF THE CONTAINER
+docker logs [CONTAINER NAME]
+
+# ATTACH TO A RUNNING CONTAINER WITHOUT RESTARTING IT
+docker attach [CONTAINER NAME]
+
+# TO REMOVE A LIST OF CONTAINERS
+docker rm [LIST WITH CONTAINER NAMES]
+
+# TO LIST IMAGES
+docker images
+
+# TO REMOVE AN IMAGE
+docker rmi [IMAGE ID]
+
+# TO REMOVE ALL UNUSED IMAGES
+docker image prune
+
+# TO REMOVE ALL UNUSED IMAGES INCLUDING TAGGED ONES
+docker image prune -a
+
+# TO INSPECT THE DETAILED INFO ABOUT THE IMAGE 
+docker image inspect [IMAGE ID]
+
+# TO COPY A FILE FROM LOCAL INSIDE THE DOCKER CONTAINER
+docker cp [LOCAL PATH]/. [CONTAINER NAME]:/[PATH INSIDE CONTAINER]
+
+# TO COPY A FILE FROM INSIDE CONTAINER TO LOCAL
+docker cp [CONTAINER NAME]:/[PATH INSIDE CONTAINER] [LOCAL PATH]/.
+
+# TO ADD A NAME AND A TAG TO DOCKER IMAGE
+docker build -t goals:latest .
+
+docker build -t [NAME]:[TAG] .
+
+# TO PUSH IMAGE TO DOCKERHUB
+docker push [IMAGE NAME ON DOCKERHUB]
+
+# TO PULL IMAGE FROM DOCKERHUB
+docker pull [IMAGE NAME ON DOCKERHUB]
+
+# TO RENAME AN EXISTING IMAGE (CREATES A CLONE / DOES NOT DELETE OLD IMAGE)
+docker tag [OLD NAME] [NEW NAME]
+
+# TO LOGIN INTO DOCKER REGISTRY
+docker login
+
+# TO LIST ALL DOCKER VOLUMES
+docker volume ls
+
+# USE -v TO INDICATE THE NAME OF NAMED VOLUMES AND PATH OF WHAT NEEDS TO BE STORED INSIDE IT
+docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback feedback-node:volumes
+
+# SECOND -v WITH ABSOLUTE PATH CREATES A BINDED MOUNT
+docker run -d --rm -p 3000:80 --name feedback-app -v feedback:/app/feedback -v "[ABSOLUTE_PATH]:/app" -v /app/node_modules feedback-node:volumes
+
+# SHORTCUT FOR PROVIDING AN ABSOLUTE PATH TO CURRENT DIRECTORY FOR THE BINDING
+-v "%cd%":/app (FOR WINDOWS)
+
+# ADD :ro TO END OF ABSOLUTE PATH IN BIND METHOD TO ENSURE THAT IT IS READ ONLY
+
+# TO MANUALLY DELETE VOLUMES YOU CAN RUN
+docker volume rm [VOL_NAME] 
+# OR TO REMOVE ALL UNUSED VOLUMES:
+docker volume prune
+
+# TO LIST ALL DOCKER VOLUMES
+docker volume ls
+
+# TO PASS DEFAULT ARGUMENT TO A IMAGE BUILD
+docker build -t feedback-node:dev --build-arg DEFAULT_PORT=8000 .
