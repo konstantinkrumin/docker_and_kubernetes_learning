@@ -109,3 +109,12 @@ docker volume ls
 
 # TO PASS DEFAULT ARGUMENT TO A IMAGE BUILD
 docker build -t feedback-node:dev --build-arg DEFAULT_PORT=8000 .
+
+# TO CREATE A NETWORK
+docker network create [NETWORK NAME]
+
+# TO LIST EXISTING NETWORKS
+docker network ls
+
+# TO RUN CONTAINER AS PART OF A NETWORK
+docker run --network [NETWORK NAME]
