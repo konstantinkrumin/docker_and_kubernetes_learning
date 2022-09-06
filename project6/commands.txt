@@ -1,0 +1,10 @@
+# TO SET UP MONGODB
+docker run --name mongodb -v data:/data/db --rm -d --network goals-net -e MONGO_INITDB_ROOT_USERNAME=costa -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+
+# TO SET UP BACKEND
+docker run --name goals-backend --rm --network goals-net -p 80:80 -v $(pwd):/app goals-node
+
+# TO SET UP FRONTEND
+ docker run -v [ABSOLUTE PATH]:/app/src --name goals-frontend --rm -p 3000:3000 -it goals-react
+
+ ** BUILD IMAGES BEFOREHAND! **

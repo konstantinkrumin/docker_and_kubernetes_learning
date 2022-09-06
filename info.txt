@@ -94,8 +94,10 @@ docker run -d -p 3000:80 --rm --name feedback-app -v feedback:/app/feedback feed
 # SECOND -v WITH ABSOLUTE PATH CREATES A BINDED MOUNT
 docker run -d --rm -p 3000:80 --name feedback-app -v feedback:/app/feedback -v "[ABSOLUTE_PATH]:/app" -v /app/node_modules feedback-node:volumes
 
-# SHORTCUT FOR PROVIDING AN ABSOLUTE PATH TO CURRENT DIRECTORY FOR THE BINDING
--v "%cd%":/app (FOR WINDOWS)
+** FOR WINDOWS YOU HAVE TO INDICATE FULL PATH FOR VOLUMES, FOR EXAMPLE: C:/Users/... **
+
+** SHORTCUT FOR PROVIDING AN ABSOLUTE PATH TO CURRENT DIRECTORY FOR THE BINDING
+-v "%cd%":/app (FOR WINDOWS) **
 
 # ADD :ro TO END OF ABSOLUTE PATH IN BIND METHOD TO ENSURE THAT IT IS READ ONLY
 
@@ -127,3 +129,4 @@ docker run --name mongodb -v data:/data/db --rm -d --network goals-net mongo
 
 # TO RUN A MONGODB CONTAINER NAMED mongodb ON goals-net NETWORK AND SET A VOLUME AND SET UP USERNAME AND PASSWORD FOR SECURITY
 docker run --name mongodb -v data:/data/db --rm -d --network goals-net -e MONGO_INITDB_ROOT_USERNAME=costa -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+
