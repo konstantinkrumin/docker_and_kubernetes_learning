@@ -1,0 +1,65 @@
+---------------------
+Create Network
+---------------------
+
+docker network create goals-net
+
+---------------------
+Run MongoDB Container
+---------------------
+
+docker run --name mongodb \
+  -e MONGO_INITDB_ROOT_USERNAME=costa \
+  -e MONGO_INITDB_ROOT_PASSWORD=secret \
+  -v data:/data/db \
+  --rm \
+  -d \
+  --network goals-net \
+  mongo
+
+---------------------
+Build Node API Image
+---------------------
+
+docker build -t goals-node .
+
+---------------------
+Run Node API Container
+---------------------
+
+docker run --name goals-backend \
+  -e MONGODB_USERNAME=costa \
+  -e MONGODB_PASSWORD=secret \
+  -v logs:/app/logs \
+  -v C:/Users/konst/Documents/__WORKSPACE__/DEV_RELATED/docker_and_kubernetes_practical_guide/project7/backend:/app \
+  -v /app/node_modules \
+  --rm \
+  -d \
+  --network goals-net \
+  -p 80:80 \
+  goals-node
+
+---------------------
+Build React SPA Image
+---------------------
+
+docker build -t goals-react .
+
+---------------------
+Run React SPA Container
+---------------------
+
+docker run --name goals-frontend \
+  -v C:/Users/konst/Documents/__WORKSPACE__/DEV_RELATED/docker_and_kubernetes_practical_guide/project7/frontend/src:/app/src \
+  --rm \
+  -d \
+  -p 3000:3000 \
+  -it \
+  goals-react
+
+---------------------
+Stop all Containers
+---------------------
+
+docker stop mongodb goals-backend goals-frontend
+
