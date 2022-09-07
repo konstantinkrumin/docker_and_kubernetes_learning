@@ -130,3 +130,17 @@ docker run --name mongodb -v data:/data/db --rm -d --network goals-net mongo
 # TO RUN A MONGODB CONTAINER NAMED mongodb ON goals-net NETWORK AND SET A VOLUME AND SET UP USERNAME AND PASSWORD FOR SECURITY
 docker run --name mongodb -v data:/data/db --rm -d --network goals-net -e MONGO_INITDB_ROOT_USERNAME=costa -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
 
+# TO START DOCKER-COMPOSE SERVICES
+docker-compose up
+
+# TO START DOCKER-COMPOSE SERVICES IN DETACHED MODE
+docker-compose up -d
+
+# TO STOP AND REMOVE DOCKER-COMPOSE SERVICES
+docker-compose down
+
+# TO STOP AND REMOVE DOCKER-COMPOSE SERVICES AS WELL AS REMOVE VOLUMES
+docker-compose down -v
+
+# TO BUILD DOCKER-COMPOSE SERVICES WITHOUT STARTING
+docker-compose build
