@@ -13,7 +13,10 @@ services:
             dockerfile: php.dockerfile
         volumes:
             - ./src:/var/www/html:delegated
-    # mysql:
+    mysql:
+        image: mysql:5.7
+        env_file:
+            - ./env/mysql.env
     # composer:
     # artisan:
     # npm:
