@@ -1,0 +1,9 @@
+# TO ENSURE THAT ALL LINUX PACKAGES ARE UPDATED AND USING LATEST VERSION ON AWS EC2
+sudo yum update -y
+
+# TO INSTALL DOCKER ON AWS LINUX INSTANCE
+sudo amazon-linux-extras install docker
+
+# TO START DOCKER ON THAT AWS EC2 INSTANCE
+sudo service docker start
+

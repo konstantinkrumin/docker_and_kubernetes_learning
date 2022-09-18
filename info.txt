@@ -153,3 +153,14 @@ docker-compose run --rm [COMMAND TO EXECUTE]
 
 # ADD --build FLAG TO FORCE CONTAINER REBUILD IF SOMETHING CHANGED
 docker-compose up -d --build server
+
+# CREATE A COPY OF AN IMAGE WITH SPECIFIC TAG ATTACHED
+docker tag [CURRENT IMAGE TAG] [NEW IMAGE TAG]
+docker tag node-dep-example-1 konstantink1/node-example-docker-course
+
+# TO PUSH IMAGE TO DOCKERHUB
+docker push [TAG]
+docker push konstantink1/node-example-docker-course
+
+# TO LOGIN INTO DOCKERHUB
+docker login
