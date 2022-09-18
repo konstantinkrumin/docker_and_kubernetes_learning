@@ -1,2 +1,5 @@
 # TO CREATE A LARAVEL PROJECT VIA COMPOSER CONTAINER
 docker-compose run --rm composer create-project --prefer-dist laravel/laravel .
+
+# TO RUN ARTISAN UTILITY CONTAINER TO PERFORM MIGRATIONS
+docker-compose run --rm artisan migrate
