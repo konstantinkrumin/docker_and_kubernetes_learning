@@ -17,12 +17,12 @@ services:
         build:
             context: .
             dockerfile: dockerfiles/php.dockerfile
-        # volumes:
-        #     - ./src:/var/www/html:delegated
-        #     - ./src:/var/www/html/storage/logs
-        #     - ./src:/var/www/html/storage/framework/sessions
-        #     - ./src:/var/www/html/storage/framework/views
-        #     - ./src:/var/www/html/storage/framework/cache
+        volumes:
+            - ./src:/var/www/html:delegated
+            - ./src:/var/www/html/storage/logs
+            - ./src:/var/www/html/storage/framework/sessions
+            - ./src:/var/www/html/storage/framework/views
+            - ./src:/var/www/html/storage/framework/cache
     mysql:
         image: mysql:5.7
         env_file:
@@ -35,8 +35,8 @@ services:
             - ./src:/var/www/html
     artisan:
         build:
-            context: ./dockerfiles
-            dockerfile: php.dockerfile
+            context: .
+            dockerfile: dockerfiles/php.dockerfile
         volumes:
             - ./src:/var/www/html
         entrypoint: ['php', '/var/www/html/artisan']
