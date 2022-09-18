@@ -164,3 +164,7 @@ docker push konstantink1/node-example-docker-course
 
 # TO LOGIN INTO DOCKERHUB
 docker login
+
+# TO PULL IMAGE FROM DOCKERHUB
+docker pull [TAG]
+docker pull konstantink1/node-example-docker-course

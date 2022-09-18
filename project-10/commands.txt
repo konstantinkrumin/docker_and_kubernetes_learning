@@ -7,3 +7,5 @@ sudo amazon-linux-extras install docker
 # TO START DOCKER ON THAT AWS EC2 INSTANCE
 sudo service docker start
 
+# TO RUN A CONTAINER IN DETACHED MODE AND OPEN PORT 80 OFF THE IMAGE PULLED FROM DOCKERHUB
+sudo docker run -d --rm -p 80:80 konstantink1/node-example-docker-course
