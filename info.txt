@@ -150,3 +150,6 @@ docker exec -it [CONTAINER_NAME] [COMMAND TO EXECUTE]
 
 # TO EXECUTE A COMMAND IN THE CONTAINER THAT IS RUNNING WITH HELP OF docker-compose
 docker-compose run --rm [COMMAND TO EXECUTE]
+
+# ADD --build FLAG TO FORCE CONTAINER REBUILD IF SOMETHING CHANGED
+docker-compose up -d --build server
