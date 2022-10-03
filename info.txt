@@ -168,3 +168,59 @@ docker login
 # TO PULL IMAGE FROM DOCKERHUB
 docker pull [TAG]
 docker pull konstantink1/node-example-docker-course
+
+## KUBERNETES
+
+# CHECK MINIKUBE STATUS
+minikube status
+
+# TO SEE MINIKUBE DASHBOARD
+minikube dashboard
+
+# TO START MINIKUBE WITH DOCKER
+minikube start --driver=docker
+
+# TO SEE CURRENT DEPLOYMENTS
+kubectl get deployments
+
+# TO SEE PODS CREATED BY CURRENT DEPLOYMENT
+kubectl get pods
+
+# TO CREATE DEPLOYMENT OBJECT
+kubectl create deployment [NAME] --image=[DOCKERHUB NAME]
+
+# TO DELETE DEPLOYMENT OBJECT
+kubectl delete deployment [NAME]
+
+# TO SET UP SERVICE OBJECT AND EXPOSE APP ON PORT 8080
+kubectl expose deployment [NAME] --type=LoadBalancer --port=8080
+
+# TO SEE SERVICES
+kubectl get services
+
+# TO SEE SERVICE RUNNING WITH MINIKUBE AND OPEN IT IN THE BROWSER
+minikube service [SERVICE NAME]
+
+# TO SCALE DEPLOYMENT TO 3 PODS
+kubectl scale deployment/[DEPLOYMENT NAME] --replicas=3
+
+# TO UPDATE A DEPLOYMENT TO THE NEW CHANGES
+kubectl set image deployment/[DEPLOYMENT NAME] [NAME]=[DOCKERHUB IMAGE]:[NEW VERSION TAG]
+
+# TO SEE ROLLOUT STATUS
+kubectl rollout status deployment/[DEPLOYMENT NAME]
+
+# TO UNDO LATEST ROLLOUT 
+kubectl rollout undo deployment/[DEPLOYMENT NAME]
+
+# TO GO BACK TO SPECIFIC REVISION VERSION
+kubectl rollout undo deployment/[DEPLOYMENT NAME] --to-revision=1
+
+# TO CHECK ROLLOUT HISTORY
+kubectl rollout history deployment/[DEPLOYMENT NAME]
+
+# TO DELETE A SERVICE 
+kubectl delete service [DEPLOYMENT NAME]
+
+# TO DELETE A DEPLOYMENT 
+kubectl delete deployment [DEPLOYMENT NAME]
