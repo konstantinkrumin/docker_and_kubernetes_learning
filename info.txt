@@ -225,5 +225,8 @@ kubectl delete service [DEPLOYMENT NAME]
 # TO DELETE A DEPLOYMENT 
 kubectl delete deployment [DEPLOYMENT NAME]
 
-# TO APPLY deployment.yaml CONFIG FILE
-kubectl apply -f=deployment.yaml
+# TO APPLY YAML CONFIG FILE
+kubectl apply -f=[FILE NAME].yaml
+
+# TO DELETE RESOURCES CREATED BY THE CONFIG FILES INSTRUCTIONS
+kubectl delete -f=[FILENAME #1] -f=[FILENAME #2]
