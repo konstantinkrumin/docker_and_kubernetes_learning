@@ -233,3 +233,12 @@ kubectl delete -f=[FILENAME #1] -f=[FILENAME #2]
 
 # TO DELETE deployments AND services RESOURCES BY LABEL
 kubectl delete -l [KEY]=[VALUE] deployments,services
+
+# TO GET STORAGE CLASSES INFO
+kubectl get sc
+
+# TO GET PERSISTENT VOLUMES LIST
+kubectl get pv
+
+# TO GET PERSISTENT VOLUMES CLAIMS LIST
+kubectl get pvc
