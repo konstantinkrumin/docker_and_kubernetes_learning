@@ -242,3 +242,6 @@ kubectl get pv
 
 # TO GET PERSISTENT VOLUMES CLAIMS LIST
 kubectl get pvc
+
+# TO GET A LIST OF NAMESPACES
+kubectl get namespaces
