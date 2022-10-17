@@ -6,6 +6,8 @@
 
 =============================================================
 
+## DOCKER
+
 # TO RUN A NODE.JS DOCKER CONTAINER
 docker run node
 
@@ -26,10 +28,10 @@ docker run -p 3000:80 896d725acc6e
 
 docker run -p [PORT WHERE WE WANT TO RUN A DOCKER]:[EXPOSED PORT] [IMAGE ID]
 
-## TO AUTOMATICALLY REMOVE CONTAINER WHEN IT IS STOPPED USE --rm
+# TO AUTOMATICALLY REMOVE CONTAINER WHEN IT IS STOPPED USE --rm
 docker run -p 3000:80 -d --rm 896d725acc6e
 
-## TO ADD A NAME TO A CONTAINER USE --name
+# TO ADD A NAME TO A CONTAINER USE --name
 docker run -p 3000:80 -d --rm --name goalsapp 896d725acc6e
 
 # TO START AN EXISTING CONTAINER
@@ -129,6 +131,8 @@ docker run --name mongodb -v data:/data/db --rm -d --network goals-net mongo
 
 # TO RUN A MONGODB CONTAINER NAMED mongodb ON goals-net NETWORK AND SET A VOLUME AND SET UP USERNAME AND PASSWORD FOR SECURITY
 docker run --name mongodb -v data:/data/db --rm -d --network goals-net -e MONGO_INITDB_ROOT_USERNAME=costa -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+
+## DOCKER COMPOSE
 
 # TO START DOCKER-COMPOSE SERVICES
 docker-compose up
